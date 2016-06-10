@@ -1,0 +1,30 @@
+{
+  "name": "whatapop",
+  "version": "1.0.0",
+  "description": "\"Aplicación de venta de artículos de segunda mano\"",
+  "main": "index.js",
+  "scripts": {
+    "sparrest": "node ./node_modules/node-sparrest/node-sparrest.js",
+    "lite": "lite-server",
+    "dev": "concurrently 'npm run sparrest' 'npm run lite'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vcurry/whatapop.git"
+  },
+  "author": "Verónica Cordobés",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vcurry/whatapop/issues"
+  },
+  "homepage": "https://github.com/vcurry/whatapop#readme",
+  "dependencies": {
+    "@angular/router": "^0.2.0",
+    "angular": "^1.5.6",
+    "lite-server": "^2.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^2.1.0",
+    "node-sparrest": "0.0.10"
+  }
+}
