@@ -1,4 +1,36 @@
 
-<ul>
+<!--<ul>
     <li ng-repeat="product in $ctrl.products">{{product.name}}</li>
-</ul>
+</ul>-->
+<!-- Lista de productos -->
+<div class="row">
+    <div class = "twelve columns">
+        <!-- Filtro de productos -->
+        <input
+                id="filtro-productos"
+                type="text"
+                placeholder="p.e. Uncharted"
+                ng-model="filtroProducto">
+
+        <!-- Lista de recetas -->
+        <table class="u-full-width">
+            <tbody>
+
+            <tr ng-repeat="product in $ctrl.products | filter: filtroProducto | orderBy: 'name'">
+                <td>
+                    <img ng-src="{{$ctrl.getRutaImagen(product.photos)}}" width="60" height="80">
+                </td>
+                <td>
+
+                    <div>
+                        <a ng-link="['ProductDetail', {id: product.id}]">{{product.name}}</a>
+                    </div>
+    <!--                    <div>
+                            <small>{{product.description}}</small>
+                        </div>-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

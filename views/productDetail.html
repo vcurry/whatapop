@@ -1,0 +1,11 @@
+<div class="row">
+    <div class = "seven columns">
+        <img ng-src="{{$ctrl.getRutaImagen($ctrl.product.photos)}}">
+        <h4>{{$ctrl.product.name}}</h4>
+        <small>{{$ctrl.product.description}}</small>
+    </div>
+    <div class = "five columns">
+        <img ng-src="{{$ctrl.getRutaImagen($ctrl.product.seller.avatar)}}" width="60" height="80">
+        {{$ctrl.product.seller.nick}}
+    </div>
+</div>

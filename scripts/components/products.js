@@ -11,6 +11,6 @@ angular
                 });
             };
 
-            self.getRutaImagen = ProductService.getRutaImagenAbsoluta();
+            self.getRutaImagen = ProductService.getRutaImagenAbsoluta;
         }
     })
