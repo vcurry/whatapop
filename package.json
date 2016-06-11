@@ -21,7 +21,8 @@
   "dependencies": {
     "@angular/router": "^0.2.0",
     "angular": "^1.5.6",
-    "lite-server": "^2.2.0"
+    "lite-server": "^2.2.0",
+    "skeleton-css": "^2.0.4"
   },
   "devDependencies": {
     "concurrently": "^2.1.0",

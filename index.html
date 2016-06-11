@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- indicamos la ruta base a partir de la cual se construye
+     Single Page Application -->
+    <base href="/">
     <meta charset="UTF-8">
     <title>Whatapop - Vende lo que ya no necesitas</title>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="node_modules/skeleton-css/css/normalize.css">
+    <link rel="stylesheet" href="node_modules/skeleton-css/css/skeleton.css">
+    <link rel="stylesheet" href="styles/whatapop.css">
     <!-- AngularJS -->
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/@angular/router/angular1/angular_1_router.js"></script>
@@ -12,16 +19,12 @@
     <script src="scripts/services/product-service.js"></script>
     <!-- Componentes -->
     <script src="scripts/components/products.js"></script>
+    <script src="scripts/components/raiz.js"></script>
 </head>
 <!-- Bootstrapping del módulo -->
 <body ng-app="whatapop">
-    <!-- Cabecera de la aplicación -->
-    <header>
-        <h1>Whatapop</h1>
-    </header>
+    <!-- Componente raíz -->
+    <raiz></raiz>
 
-    <section>
-        <products></products>
-    </section>
 </body>
 </html>
