@@ -28,37 +28,7 @@
 
 <body>
 
-<!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
+
 
 <!-- Page Content -->
 <div class="container">
@@ -66,7 +36,7 @@
     <div class="row">
 
         <div class="col-md-3">
-            <p class="lead">Whatapop</p>
+            <p class="lead">Los mejores productos</p>
             <p class="lead">Busca por categoría</p>
             <div>
                 <select ng-model="selectedCategory">
@@ -130,18 +100,18 @@
                             <h4><a ng-link="['ProductDetail', {id: product.id}]">{{product.name}}</a>
                             </h4>
                             <h4 class="pull-right">{{product.price | currency}}</h4>
+                            <h4 class="glyphicon glyphicon-star"></h4>
+                            <label>
+                                <input type="checkbox" ng-model="favorito">
+                            </label>
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
         </div>
-
     </div>
-
 </div>
+    </div>
 <!-- /.container -->
 
 <div class="container">

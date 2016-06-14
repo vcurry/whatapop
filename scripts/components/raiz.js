@@ -10,6 +10,10 @@ angular
             name: "ProductDetail",
             path: "/productDetail/:id",
             component: "productDetail"
+        },{
+            name: "Users",
+            path: "/nuevo-usuario",
+            component: "nuevoUsuario"
         }],
         templateUrl: "views/raiz.html"
     });
