@@ -23,6 +23,7 @@
     "angular": "^1.5.6",
     "angular-local-storage": "^0.2.7",
     "lite-server": "^2.2.0",
+    "ng-haversine": "0.0.1",
     "ng-image-picker": "0.0.1",
     "skeleton-css": "^2.0.4"
   },

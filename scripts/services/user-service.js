@@ -2,8 +2,14 @@ angular
     .module("whatapop")
     .service("UserService", function ($http) {
 
-        this.guardarUsuario = function (user, imagen) {
+        //Obtenemos la colección de productos
+        this.getUsers = function () {
+            return $http.get("http://localhost:8000/api/users");
+        };
 
+
+        this.guardarUsuario = function (user, imagen) {
+            
             var promesa;
 
             // Si la imagen viene dada.
@@ -38,56 +44,19 @@ angular
                         // el objeto receta antes de guardarla.
                         user.avatar = ruta;
 
-                     //   return $http.post("http://localhost:8000/api/users", user);
-                        if (navigator.geolocation) {
-                            navigator.geolocation.getCurrentPosition(function (position) {
-                                var lat = position.coords.latitude;
-                                var lng = position.coords.longitude;
-                                var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true";
-                                $http.get(url)
-                                    .then(function (result) {
-                                        user.latitude =  lat;
-                                        user.longitude = lng;
-                                        return $http.post("http://localhost:8000/api/users", user);
-                                })
-                            })
-                        } else{
-                            return $http.post("http://localhost:8000/api/users", user);
 
-                        }
-                  /*  .then(navigator.geolocation.getCurrentPosition(function (position) {
-                        var lat = position.coords.latitude;
-                        var lng = position.coords.longitude;
-                        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true";
-                        $http.get(url)
-                            .then(function (result) {
-                                user.latitude =  lat;
-                                user.longitude = lng;
-                            return $http.post("http://localhost:8000/api/users", user);
-                        });*/
-                 })
+                        return $http.post("http://localhost:8000/api/users", user);
+                    })
+
             }
 
 
 
             // En caso de no haber indicado una imagen.
             else {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(function (position) {
-                        var lat = position.coords.latitude;
-                        var lng = position.coords.longitude;
-                        var url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=true";
-                        $http.get(url)
-                            .then(function (result) {
-                                user.latitude =  lat;
-                                user.longitude = lng;
-                                return $http.post("http://localhost:8000/api/users", user);
-                            })
-                    })
-                } else {
 
                     promesa = $http.post("http://localhost:8000/api/users", user);
-                }
+
             }
 
             return promesa;

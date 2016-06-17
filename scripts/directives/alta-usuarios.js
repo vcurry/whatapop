@@ -20,12 +20,11 @@ angular
                 scope.notificarTexto = function () {
                         scope.alHacerClick({ user: scope.user});
                 }
-                
+
                 
                 scope.puedoGuardar = function () {
                     return scope.user.name;
                 }
             }
-
         };
     });

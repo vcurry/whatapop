@@ -1,7 +1,8 @@
 //Setter del módulo
 angular.module("whatapop", [
     "ngComponentRouter",
-    "dahr.ng-image-picker"
+    "dahr.ng-image-picker",
+    "dahr.ng-haversine"
 ]);
 
 //Configuramos el proveedor '$locationProvider'. Establecemos el

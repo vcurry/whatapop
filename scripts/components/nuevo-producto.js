@@ -1,18 +1,18 @@
-
 angular
     .module("whatapop")
-    .component("nuevoUsuario", {
-        
+    .component("nuevoProducto", {
+
         bindings: {
             $router: "<"
         },
-        templateUrl: "views/nuevo-usuario.html",
-        controller: function(UserService) {
+        templateUrl: "views/nuevo-producto.html",
+        controller: function(ProductService) {
 
             // Guardamos la referencia al componente.
             var self = this;
 
-            var imagenUsuario;
+            var name = "";
+            var description=""
 
             var latitude = "0";
             var longitude = "0";
@@ -26,7 +26,7 @@ angular
                     longitude = position.coords.longitude;
                 };
             }
-            
+
 
             // Guardamos el usuario
             self.guardarUsuario = function(user) {
@@ -51,4 +51,3 @@ angular
             };
         }
     });
-
