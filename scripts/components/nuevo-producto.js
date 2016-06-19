@@ -4,34 +4,64 @@ angular
 
         bindings: {
             $router: "<"
+            
         },
         templateUrl: "views/nuevo-producto.html",
-        controller: function(ProductService) {
+        controller: function(ProductService, CategoryService, UserService) {
 
             // Guardamos la referencia al componente.
             var self = this;
-
-            var name = "";
-            var description=""
-
-            var latitude = "0";
-            var longitude = "0";
-
+            
+            self.selectedCategory= {category: {
+                id: ""}};
+            
+            self.selectedUser= {user:
+                {id:""}};
+            
             self.$onInit = function () {
-                if(navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(getPosition);
-                }
-                function getPosition(position) {
-                    latitude = position.coords.latitude;
-                    longitude = position.coords.longitude;
-                };
-            }
+                CategoryService.getCategories().then(function (respuesta) {
+                    self.categories = respuesta.data;
+                });
 
+                UserService.getUsers().then(function (respuesta) {
+                    self.users = respuesta.data;
+                });
+            }
+/*
+            for(var i =0; i< self.categories.length; i++) {
+                if (self.categories[i].name === self.selectedCategory){
+                    product.category = self.categories[i];
+                }
+            }
+            
+            for(var i =0; i< self.users.length; i++) {
+                if (self.user[i].id === self.seller){
+                    product.user = self.user[i];
+                }
+            }*/
 
             // Guardamos el usuario
-            self.guardarUsuario = function(user) {
+            self.guardarProducto = function(product) {
+                console.log(self.selectedCategory);
+                CategoryService
+                    .getCategory(self.selectedCategory)
+                    .then(function (respuesta) {
+                        product.category = respuesta.data;
+                });
+
                 UserService
-                    .guardarUsuario(user, latitude, longitude, imagenUsuario)
+                    .getUser(self.selectedUser)
+                    .then(function (respuesta) {
+                        var productUser = {
+                            id: respuesta.data.id,
+                            nick: respuesta.data.nick,
+                            avatar: respuesta.data.avatar
+                        }
+                        product.seller = productUser;
+                    });
+
+                ProductService
+                    .guardarProducto(product, imagenProducto)
                     .then(function() {
 
                         self.$router.navigate(["Products"]);
@@ -41,13 +71,13 @@ angular
             // Guardamos el documento de imagen indicado para
             // almacenarlo en el servidor junto con el usuario.
             self.seleccionarImagen = function(imagen) {
-                imagenUsuario = imagen;
+                imagenProducto = imagen;
             };
 
             // Eliminamos el documento de imagen que
             // hubiese seleccionado previamente.
             self.deseleccionarImagen = function() {
-                imagenUsuario = undefined;
+                imagenProducto = undefined;
             };
         }
     });

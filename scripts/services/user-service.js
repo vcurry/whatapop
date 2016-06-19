@@ -7,6 +7,10 @@ angular
             return $http.get("http://localhost:8000/api/users");
         };
 
+        //Obtenemos la colección de categorías
+        this.getUser = function (id) {
+            return $http.get("http://localhost:8000/api/users/" + id);
+        }
 
         this.guardarUsuario = function (user, imagen) {
             

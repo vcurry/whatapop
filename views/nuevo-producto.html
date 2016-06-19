@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Whatapop - Vende lo que no necesitas</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/shop-homepage.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+<!-- Zona dinámica -->
+<ng-outlet></ng-outlet>
+<body>
+
+
+<!-- Page Content -->
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <h1></h1>
+            <h4>Imagen</h4>
+
+            <image-picker
+                    image-selected="$ctrl.seleccionarImagen(imageFile)"
+                    image-deselected="$ctrl.deseleccionarImagen()"></image-picker>
+
+            <h1></h1>
+
+            <div>
+                <!-- Categoría -->
+                <label>
+                    Category
+                </label>
+                <div>
+                    <select ng-model="$ctrl.selectedCategory">
+                        <option ng-repeat="category in $ctrl.categories" value="{{category.id}}">{{category.name}}</option>
+                    </select>
+                </div>
+                <!-- Seller -->
+                <label>
+                    Vendedor
+                </label>
+                <div>
+                    <select ng-model="$ctrl.selectedUser">
+                        <option ng-repeat="user in $ctrl.users" value="{{user.id}}">{{user.name}}</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="col-md-8">
+
+            <alta-producto al-hacer-click="$ctrl.guardarProducto(product)"></alta-producto>
+
+        </div>
+     </div>
+</div>
+
+
+
+
+
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

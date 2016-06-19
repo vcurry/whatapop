@@ -14,6 +14,10 @@ angular
             name: "Users",
             path: "/nuevo-usuario",
             component: "nuevoUsuario"
+        },{
+            name: "AltaProducto",
+            path: "/nuevo-producto",
+            component: "nuevoProducto"
         }],
         templateUrl: "views/raiz.html"
     });

@@ -6,4 +6,9 @@ angular
         this.getCategories = function () {
             return $http.get("http://localhost:8000/api/categories")
         }
+        
+        //Obtenemos la colección de categorías
+        this.getCategory = function (id) {
+            return $http.get("http://localhost:8000/api/categories/" + id);
+        }
     })
