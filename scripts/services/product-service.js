@@ -1,14 +1,14 @@
 angular
     .module("whatapop")
-    .service("ProductService", function ($http) {
+    .service("ProductService", function ($http, Propiedades) {
 
         //Obtenemos la colección de productos
         this.getProducts = function () {
-            return $http.get("http://localhost:8000/api/products");
+            return $http.get(Propiedades.urlServidor + Propiedades.products);
         };
 
         this.getProduct = function (id) {
-            return $http.get("http://localhost:8000/api/products/" + id);
+            return $http.get(Propiedades.urlServidor + Propiedades.products + "/" + id);
         };
 
         this.guardarProducto = function (product, imagen) {
@@ -34,7 +34,7 @@ angular
 
                 // Subimos la imagen al servidor.
                 promesa = $http
-                    .post("http://localhost:8000/upload",
+                    .post(Propiedades.urlServidor + Propiedades.imagenes,
                         datos,
                         configuracion
                     )
@@ -49,7 +49,7 @@ angular
                         product.photos.push(ruta);
 
 
-                        return $http.post("http://localhost:8000/api/products", product);
+                        return $http.post(Propiedades.urlServidor + Propiedades.products, product);
                     })
 
             }
@@ -59,7 +59,7 @@ angular
             // En caso de no haber indicado una imagen.
             else {
 
-                promesa = $http.post("http://localhost:8000/api/products", product);
+                promesa = $http.post(Propiedades.urlServidor + Propiedades.products, product);
 
             }
 
@@ -68,7 +68,7 @@ angular
 
 
         this.getRutaImagenAbsoluta = function (rutaRelativa) {
-            return rutaRelativa ? ("http://localhost:8000/" + rutaRelativa) : undefined;
+            return rutaRelativa ? (Propiedades.urlServidor + "/" + rutaRelativa) : undefined;
             
         }
     });

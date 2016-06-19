@@ -2,13 +2,19 @@
 angular.module("whatapop", [
     "ngComponentRouter",
     "dahr.ng-image-picker",
-    "dahr.ng-haversine"
+    "dahr.ng-haversine",
+    "LocalStorageModule"
 ]);
 
 //Configuramos el proveedor '$locationProvider'. Establecemos el
 //modo de navegación HTML5 para que funcione el Single Page Application
 angular.module("whatapop").config(function ($locationProvider) {
     $locationProvider.html5Mode(true);
+});
+
+
+angular.module("whatapop").config(function (localStorageServiceProvider) {
+    localStorageServiceProvider.setStorageType('sessionStorage');
 });
 
 //En el value $routerRootComponent indicamos el componente raíz,

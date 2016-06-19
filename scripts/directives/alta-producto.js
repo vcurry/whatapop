@@ -26,7 +26,7 @@ angular
 
 
                 scope.puedoGuardar = function () {
-                    return scope.product.name && scope.seller.id;
+                    return scope.product.name;
                 }
             }
         };

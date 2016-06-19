@@ -11,12 +11,13 @@ angular
 
             // Guardamos la referencia al componente.
             var self = this;
-            
-            self.selectedCategory= {category: {
-                id: ""}};
+
+            self.selectedCategory;
             
             self.selectedUser= {user:
-                {id:""}};
+                {id: ""}};
+
+            var imagenProducto;
             
             self.$onInit = function () {
                 CategoryService.getCategories().then(function (respuesta) {
@@ -27,22 +28,9 @@ angular
                     self.users = respuesta.data;
                 });
             }
-/*
-            for(var i =0; i< self.categories.length; i++) {
-                if (self.categories[i].name === self.selectedCategory){
-                    product.category = self.categories[i];
-                }
-            }
-            
-            for(var i =0; i< self.users.length; i++) {
-                if (self.user[i].id === self.seller){
-                    product.user = self.user[i];
-                }
-            }*/
 
             // Guardamos el usuario
             self.guardarProducto = function(product) {
-                console.log(self.selectedCategory);
                 CategoryService
                     .getCategory(self.selectedCategory)
                     .then(function (respuesta) {

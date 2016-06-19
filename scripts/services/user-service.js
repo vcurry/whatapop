@@ -1,15 +1,15 @@
 angular
     .module("whatapop")
-    .service("UserService", function ($http) {
+    .service("UserService", function ($http, Propiedades) {
 
         //Obtenemos la colección de productos
         this.getUsers = function () {
-            return $http.get("http://localhost:8000/api/users");
+            return $http.get(Propiedades.urlServidor + Propiedades.users);
         };
 
         //Obtenemos la colección de categorías
         this.getUser = function (id) {
-            return $http.get("http://localhost:8000/api/users/" + id);
+            return $http.get(Propiedades.urlServidor + Propiedades.users + "/" + id);
         }
 
         this.guardarUsuario = function (user, imagen) {
@@ -34,7 +34,7 @@ angular
 
                 // Subimos la imagen al servidor.
                 promesa = $http
-                    .post("http://localhost:8000/upload",
+                    .post(Propiedades.urlServidor + Propiedades.imagenes,
                         datos,
                         configuracion
                     )
@@ -49,7 +49,7 @@ angular
                         user.avatar = ruta;
 
 
-                        return $http.post("http://localhost:8000/api/users", user);
+                        return $http.post(Propiedades.urlServidor + Propiedades.users, user);
                     })
 
             }
@@ -59,7 +59,7 @@ angular
             // En caso de no haber indicado una imagen.
             else {
 
-                    promesa = $http.post("http://localhost:8000/api/users", user);
+                    promesa = $http.post(Propiedades.urlServidor + Propiedades.users, user);
 
             }
 
@@ -68,6 +68,6 @@ angular
         
 
         this.getRutaImagenAbsoluta = function (rutaRelativa) {
-            return rutaRelativa ? ("http://localhost:8000/" + rutaRelativa) : undefined;
+            return rutaRelativa ? (Propiedades.urlServidor + "/" + rutaRelativa) : undefined;
         };
     });

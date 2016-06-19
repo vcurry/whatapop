@@ -23,7 +23,7 @@ angular
 
                 
                 scope.puedoGuardar = function () {
-                    return scope.user.name;
+                    return scope.user.name && scope.user.email && scope.user.email;
                 }
             }
         };

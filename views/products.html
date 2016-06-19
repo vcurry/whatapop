@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Whatapop - Vende lo que no necesitas</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
+<html>
 <body>
-
 <!-- Page Content -->
 <div class="container">
 
@@ -56,15 +28,19 @@
                 type="number"
                 placeholder="p.e. 50"
                 ng-model="$ctrl.radio"
-                ng-blur="$ctrl.filterByPosition()"
+                ng-change="$ctrl.filterByPosition()"
                 ng-disabled="!$ctrl.here"
                 >
-
+            <h1></h1>
+            <p class="lead">Busca entre tus favoritos</p>
+            <button ng-click="$ctrl.mostrarFavoritos()"
+                    ng-disabled="$ctrl.favoritos.length == 0">Aceptar</button>
         </div>
 
         <div class="col-md-9">
 
             <div class="row carousel-holder">
+
 
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -75,7 +51,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="slide-image" src="http://localhost:8000/upload/3por2.png">
+                                <img class="slide-image" src="http://localhost:8000/upload/3por2.png" alt="">
                             </div>
                             <div class="item">
                                 <img class="slide-image" src="http://localhost:8000/upload/Novedades.png" alt="">
@@ -92,23 +68,26 @@
                         </a>
                     </div>
                 </div>
-
             </div>
+
 
             <div class="row">
                 <div ng-repeat="product in $ctrl.products | filter: filtroProducto | filter: selectedCategory | filter : filterByPosition() | orderBy: 'name' ">
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
 
-                        <a ng-link="['ProductDetail', {id: product.id}]"><img ng-src="{{$ctrl.getRutaImagen(product.photos)}}" width="150" height="300"></a>
-                        <div class="caption">
-                            <h4><a ng-link="['ProductDetail', {id: product.id}]">{{product.name}}</a>
-                            </h4>
-                            <h4 class="pull-right">{{product.price | currency}}</h4>
-                            <h4 class="glyphicon glyphicon-star"></h4>
-                            <label>
-                                <input type="checkbox" ng-model="$ctrl.favorito">
-                            </label>
+                            <a ng-link="['ProductDetail', {id: product.id}]"><img ng-src="{{$ctrl.getRutaImagen(product.photos)}}" width="150" height="300"></a>
+                            <div class="caption">
+                                <h4><a ng-link="['ProductDetail', {id: product.id}]">{{product.name}}</a>
+                                </h4>
+                                <h4 class="pull-right">{{product.price | currency}}</h4>
+                                <h4 class="glyphicon glyphicon-star"></h4>
+                                <label>
+                                    <input type="checkbox"
+                                        ng-checked="$ctrl.esProducto(product)"
+                                        ng-click="$ctrl.toggle(product)">
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,14 +95,6 @@
         </div>
     </div>
 </div>
-    </div>
-
-
-<!-- jQuery -->
-<script src="js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="js/bootstrap.min.js"></script>
 
 </body>
 

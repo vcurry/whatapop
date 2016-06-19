@@ -1,46 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Whatapop - Vende lo que no necesitas</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/shop-homepage.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
 
 <body>
 
 <!-- Page Content -->
-<div class="container">
 
     <div class="row">
 
-        <div class="col-md-4">
+        <div class="col-md-8">
 
 
-            <div class="col-md-8">
-                <p class="lead">Nuevo Producto</p>
-
-                <div>
-
+                    <p></p>
                     <!-- Nombre -->
                     <label for="nombre-producto">
                         Nombre
@@ -52,7 +21,7 @@
                             class="u-full-width"
                             ng-model="product.name"
                             required>
-
+                    <p></p>
                     <!-- Descripción -->
                     <label for="descript-product">
                         Description
@@ -64,7 +33,7 @@
                             class="u-full-width"
                             ng-model="product.description"
                             required>
-
+                    <p></p>
                     <!-- Estado -->
                     <label>
                         State
@@ -75,6 +44,7 @@
                             <option value="sold">sold</option>
                         </select>
                     </div>
+            <p></p>
                     <!-- Precio -->
                     <label for="price-product">
                         Price
@@ -87,10 +57,11 @@
                             ng-model="product.price"
                             required>
 
-                    <p></p>
+                    <h1></h1>
                     <!-- Botón para guardar producto -->
                     <button
                             ng-click="notificarTexto()"
+                            ng-disabled="!puedoGuardar()"
                             >
                         Aceptar
                     </button>
@@ -101,12 +72,6 @@
         </div>
     </div>
 
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
 
 </body>
 

@@ -30,8 +30,10 @@ angular
 
             // Guardamos el usuario
             self.guardarUsuario = function(user) {
+                user.latitude= latitude;
+                user.longitude = longitude;
                 UserService
-                    .guardarUsuario(user, latitude, longitude, imagenUsuario)
+                    .guardarUsuario(user, imagenUsuario)
                     .then(function() {
 
                         self.$router.navigate(["Products"]);
